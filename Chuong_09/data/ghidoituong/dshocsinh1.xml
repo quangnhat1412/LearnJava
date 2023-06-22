@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<DShocsinh>
+    <HocSinh mahs="A001" tenhs="Tran Quang Nhat" tuoi="22"/>
+    <HocSinh mahs="A002" tenhs="Ly Cong Uan" tuoi="20"/>
+    <HocSinh mahs="A003" tenhs="Le Loi" tuoi="25"/>
+    <HocSinh mahs="A004" tenhs="Vo Thi Sau" tuoi="19"/>
+</DShocsinh>

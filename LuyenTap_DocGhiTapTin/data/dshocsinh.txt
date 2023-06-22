@@ -1,0 +1,9 @@
+A001;Tran Quang Nhat;12
+A002;Truong Cong Dinh;20
+A003;Le Ngoc Chau Anh;35
+
+
+A004;Tran Ha Vy;18
+A005;Duong Nguyen Thuy Linh;19      
+
+A006;Nguyen Dinh Vu;10

@@ -1,0 +1,5 @@
+B001:Tran Quang Nhat:22
+B002:Truong Cong Dinh:20
+B003:Le Loi:19
+B004:Vo Thi Sau:32
+B005:Nguyen Tat Thanh:18

@@ -1,0 +1,7 @@
+A001;Tran Quang Nhat;4;5
+A007;Tran Quoc Toan;5;3
+A002;Truong Cong Dinh;7;8.0;9.5
+A003;Le Ngoc Chau Anh;15;0.0;0.0;0.0
+A004;Tran Ha Vy;8;9.0;9.5
+A005;Duong Nguyen Thuy Linh;14;0.0;0.0;0.0
+A006;Nguyen Dinh Vu;13;0.0;0.0;0.0
