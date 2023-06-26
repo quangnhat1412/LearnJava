@@ -1,0 +1,51 @@
+[{
+        "ly": 9.0,
+        "tiengAnh": 10.0,
+        "hoa": 10.0,
+        "maHS": "LM30",
+        "tenHS": "Lionel Messi",
+        "tuoi": 36
+    }, {
+        "buoiVang": 5,
+        "maHS": "A001",
+        "tenHS": "Tran Quang Nhat",
+        "tuoi": 4
+    }, {
+        "buoiVang": 3,
+        "maHS": "A007",
+        "tenHS": "Tran Quoc Toan",
+        "tuoi": 5
+    }, {
+        "ly": 9.0,
+        "tiengAnh": 8.5,
+        "hoa": 9.5,
+        "maHS": "A003",
+        "tenHS": "Le Ngoc Chau Anh",
+        "tuoi": 15
+    }, {
+        "tapLamVan": 8.0,
+        "toan": 9.5,
+        "maHS": "A002",
+        "tenHS": "Truong Cong Dinh",
+        "tuoi": 7
+    }, {
+        "tapLamVan": 9.0,
+        "toan": 9.5,
+        "maHS": "A004",
+        "tenHS": "Tran Ha Vy",
+        "tuoi": 8
+    }, {
+        "ly": 10.0,
+        "tiengAnh": 7.0,
+        "hoa": 6.5,
+        "maHS": "A005",
+        "tenHS": "Duong Nguyen Thuy Linh",
+        "tuoi": 14
+    }, {
+        "ly": 8.0,
+        "tiengAnh": 7.5,
+        "hoa": 6.5,
+        "maHS": "A006",
+        "tenHS": "Nguyen Dinh Vu",
+        "tuoi": 13
+    }]

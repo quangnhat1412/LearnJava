@@ -70,7 +70,7 @@ public abstract class NhanVien {
         System.out.println("- Ma: " + this.maNV + "Ten: "+ this.tenNV + "- ngay sinh: " + this.ngaySinh);
     }
     
-    // So sanh các đói tượng nhân viên theo tên của chúng
+    // So sanh các đói tượng nhân viên theo tên
     public static Comparator<NhanVien> compareByten(){ 
         return Comparator.comparing(NhanVien::getTen);
     }
