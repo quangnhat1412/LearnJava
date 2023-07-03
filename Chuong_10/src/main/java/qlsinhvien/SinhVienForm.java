@@ -18,6 +18,7 @@ public class SinhVienForm extends javax.swing.JFrame {
      */
     SinhVienList sinhvienlist = new SinhVienList();
     int stt = - 1;
+    private boolean allowFocusLost = true;
 
     public SinhVienForm() {
         initComponents();
@@ -59,16 +60,31 @@ public class SinhVienForm extends javax.swing.JFrame {
 
         txtmasv.setEditable(false);
         txtmasv.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtmasv.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtmasvKeyTyped(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("Tên SV");
 
         txttensv.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txttensv.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txttensvKeyTyped(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Học bổng");
 
         txthocbong.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txthocbong.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txthocbongKeyTyped(evt);
+            }
+        });
 
         btndau.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btndau.setText("Đầu");
@@ -245,6 +261,7 @@ public class SinhVienForm extends javax.swing.JFrame {
         ganSinhVien(stt);
         // thiet lap che do không cho phép chỉnh sủa txtmasv
         txtmasv.setEditable(false);
+        allowFocusLost = false; // Ngăn chặn việc bỏ focus
     }//GEN-LAST:event_btnkhongActionPerformed
 
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
@@ -273,30 +290,22 @@ public class SinhVienForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnhuyActionPerformed
 
     private void btnghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnghiActionPerformed
-        // ghi sau khi thêm mới (txtmasv cho phép chỉnh sửa)
+        // Check lỗi 
         String loi = "";
-        if (txtmasv.getText().equals("")) {
-            loi += "mã sinh viên không dc rỗng \n";
+        // txtmasv không dc rỗng 
+        if(txtmasv.getText().length() == 0){
+            loi += "Mã SV không được rỗng !!! \n";
         }
-        if (txttensv.getText().equals("")) {
-            loi += "tên sinh viên không dc rỗng \n";
+        // txttensv không dc rỗng
+        if(txttensv.getText().length() == 0){
+            loi += "Tên SV không được rỗng !!!";
         }
-
-        if (loi.length() > 0) {
-            JOptionPane.showMessageDialog(this, loi, "Thông Báo !!!", JOptionPane.INFORMATION_MESSAGE);
-            txtmasv.requestFocus();
+        if(loi.length()>0){
+            JOptionPane.showMessageDialog(this, loi, "Thông Báo !!!", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        if(chiChuaChu(txttensv.getText())){
-            JOptionPane.showMessageDialog(this, "Tên sinh viên không dc chứa số", "Thông Báo !!!", JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-        
-        if(chiChuaSo(txthocbong.getText())){
-            JOptionPane.showMessageDialog(this, "Học bổng không dc chứa ký tự", "Thông Báo !!!", JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-        
+        // txthocbong có quyền rỗng nhưng không dc nhập kí tự đặc biệc và chữ
+        // Ghi sau khi thêm mới (txtmasv cho phép chỉnh sửa)
         SinhVien sv = new SinhVien(txtmasv.getText(), txttensv.getText(), Integer.parseInt(txthocbong.getText()));
         if (txtmasv.isEditable()) {
             // Ghi sau khi thêm mới 
@@ -304,10 +313,11 @@ public class SinhVienForm extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Thêm sinh viên thành công", "Thông Báo !!!", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "Thêm sinh viên thất bại", "Thông Báo !!!", JOptionPane.INFORMATION_MESSAGE);
+                txtmasv.requestFocus();
             }
             txtmasv.setEditable(false);
         } else {
-            // ghi sau khi sửa
+            // Ghi sau khi sửa
             if (sinhvienlist.updateSV(sv)) {
                 JOptionPane.showMessageDialog(this, "Sửa sinh viên thành công", "Thông Báo !!!", JOptionPane.INFORMATION_MESSAGE);
             } else {
@@ -315,6 +325,27 @@ public class SinhVienForm extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnghiActionPerformed
+
+    private void txthocbongKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txthocbongKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c) || Character.isWhitespace(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txthocbongKeyTyped
+
+    private void txttensvKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttensvKeyTyped
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txttensvKeyTyped
+
+    private void txtmasvKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtmasvKeyTyped
+        char c = evt.getKeyChar();
+        if (Character.isWhitespace(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtmasvKeyTyped
 
     /**
      * @param args the command line arguments
